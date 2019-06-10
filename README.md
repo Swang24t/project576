@@ -2,9 +2,8 @@
 # Traditional Machine learning(SVM) employed on age classification
 We implement HOG to extract the face region of input images and feed into a SVM machine and Random Forest machine.SVM model is saved because of the better performance. The model is trained by HOG_SVM_2.ipynb and is saved as train_model.m.
 
-To test existing photo, you can use $ python3  
-To use front camera of che computer, you can use RealTime_main.py
-
+To use front camera of che computer, you can use $ python main.py
+To test the existing photo, you can use Testing_Pictures.py to test the existing photo.
 
 ### Dependencies
 python 3.6.7<br />
@@ -15,8 +14,7 @@ imutils 0.4.6
 
 ## Running the tests
 
-Please run the main.py in either command line or any python development environment. Follow the instrustion print on screen
-to input the image directory to get age prediction. 
+Please run the main.py in either command line or any python development environment.
 
 
 ## References
