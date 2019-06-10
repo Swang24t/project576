@@ -10,7 +10,9 @@ python 3.6.7<br />
 numpy 1.13.3<br />
 keras 2.2.4<br />
 opencv 3.3.0<br />
+scikit-learn	0.21.2	<br />
 imutils 0.4.6
+
 
 ## Running the tests
 
