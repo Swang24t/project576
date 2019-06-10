@@ -40,38 +40,40 @@ def predGrayCropped(img):
 
 
 
+def CamTest():
+    cap=cv2.VideoCapture(0) #For Primary webcam
+    if cap.isOpened():
+        while 1:
 
-cap=cv2.VideoCapture(0) #For Primary webcam
-if cap.isOpened():
-    while 1:
+            ret, img = cap.read()
+            gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+            faces = face_cascade.detectMultiScale(gray, 1.3, 5)
+            if len(faces)==1:
+                for (x, y, w, h) in faces:
+                    # in face
+                    cv2.rectangle(img, (x, y), (x + w, y + h), (255, 218, 185), 3)
 
-        ret, img = cap.read()
-        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-        faces = face_cascade.detectMultiScale(gray, 1.3, 5)
-        if len(faces)==1:
-            for (x, y, w, h) in faces:
-                # in face
-                cv2.rectangle(img, (x, y), (x + w, y + h), (255, 218, 185), 3)
+                    # extracting the facial part
+                    roi_gray = gray[y:y + h, x:x + w]
 
-                # extracting the facial part
-                roi_gray = gray[y:y + h, x:x + w]
+                ageP = predGrayCropped(roi_gray)
+                cv2.putText(img, "%s" % str(ageP * 10) + "~" + str(ageP * 10 + 9), (x - 4, y - 4), cv2.FONT_HERSHEY_SIMPLEX,
+                        0.5,
+                        (0, 255, 255), 1)
 
-            ageP = predGrayCropped(roi_gray)
-            cv2.putText(img, "%s" % str(ageP * 10) + "~" + str(ageP * 10 + 9), (x - 4, y - 4), cv2.FONT_HERSHEY_SIMPLEX,
-                    0.5,
-                    (0, 255, 255), 1)
+            cv2.imshow('predict', img)
+    #
+            # wait key
+            k = cv2.waitKey(30) & 0xff
+            if k == 27:
+                break
 
-        cv2.imshow('predict', img)
-#
-        # wait key
-        k = cv2.waitKey(30) & 0xff
-        if k == 27:
-            break
+        pass
+    # AgePredictInWholePicuture(img)
 
-    pass
-# AgePredictInWholePicuture(img)
+    cap.release()
 
-cap.release()
+    #closing all the window
+    cv2.destroyAllWindows()
 
-#closing all the window
-cv2.destroyAllWindows()
+CamTest();
