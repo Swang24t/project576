@@ -68,30 +68,6 @@ def AgePredictInWholePicuture(img):
     pass
 
 
-# def AgePredictInWholePicutureReal(img):  # real-time from camera 没有BGR2RGB
-#
-#     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-#     faces = face_cascade.detectMultiScale(gray, 1.3, 5)
-#     for (x, y, w, h) in faces:
-#         # in face
-#         cv2.rectangle(img, (x, y), (x + w, y + h), (255, 218, 185), 3)
-#
-#         # extracting the facial part
-#         roi_gray = gray[y:y + h, x:x + w]
-#
-#         # roi_color = img[y:y + h, x:x + w]
-#         # simg = cv2.resize(roi_gray, (80, 80))
-#     ageP = predGrayCropped(roi_gray)
-#     cv2.putText(img, "%s" % str(ageP * 10) + "~" + str(ageP * 10 + 9), (x - 4, y - 4), cv2.FONT_HERSHEY_SIMPLEX, 0.5,
-#                 (0, 255, 255), 1)
-#     # img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-#     # plt.imshow(img)
-#     # plt.show()
-#
-#     return (img)
-
-
-#     return (roi_gray)
-img=GETimg("test/"+"test3.png")
+img=GETimg("test/"+"test3.png")#put the directory of the testing picture here
 AgePredictInWholePicuture(img)
 
